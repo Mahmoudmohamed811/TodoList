@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  todo-app:
+    image: mahmoudmabdelhamid/todo-nodejs:latest
+    container_name: todo-app
+    ports:
+      - "4000:4000"
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true              # Remove old images after update
+      - WATCHTOWER_POLL_INTERVAL=60         # Check every 60 seconds
+      - WATCHTOWER_INCLUDE_RESTARTING=true  # Watch restarting containers
