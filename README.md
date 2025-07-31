@@ -1,4 +1,4 @@
-# Todo List Application Deployment
+## Todo List Application Deployment
 
 This project demonstrates a full deployment pipeline for a Node.js Todo List application, integrating Docker, Ansible, GitHub Actions, and automated updates with Watchtower. The goal was to containerize the application, automate its build and deployment, and ensure continuous updates on a Linux VM.
 
